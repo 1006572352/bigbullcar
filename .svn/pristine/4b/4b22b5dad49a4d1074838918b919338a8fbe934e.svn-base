@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+.bgce{
+	position:relative;
+	height:720px;
+}
+.bgce a{
+	font-size:24px;
+	font-family:microsoft yahei;
+	text-indent:75px;
+	height:64px;
+	width:240px;
+	display:block;
+	position:absolute;
+	left:250px;
+	text-decoration:none;
+	background-image:url(../images/app.png);
+	background-repeat:no-repeat;
+	background-color:#F93;
+	color:#000;
+	border-radius:30px;
+}
+.icon-android{
+	top:460px;
+	background-position:26px 11px;
+}
+.icon-ios{
+	top:540px;
+	background-position:26px -80px;
+}
+a{
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+}
+.erweima{
+	position:absolute;
+	bottom:10px;
+	left:550px;
+	width:300px;
+	height:300px;
+	background:url(../images/erweima.png) no-repeat 0 0;
+	border:1px solid #d2d2d2;
+}
+.adown-body{
+	background:url(../images/background.jpg) no-repeat center 0;
+}
+
+.w{
+	width:1190px;
+	margin:0 auto;
+}
+div{
+	padding:0;
+	border:0;
+	outline:0;
+	display:block;
+}
+body{
+	/* font-family:Microsoft Yahei,arial,'sans-serif';
+	font:12px/1.5;
+	arial,helvetica,clean,sans-serif;
+	background:#e2e2e2; */
+    background-image:url("${pageContext.request.contextPath}/resources/images/1.jpg") ;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-size:cover;
+    -moz-background-size:cover;
+    -webkit-background-size:cover;
+}
+}
+</style>
+</head>
+
+<body style="background-image:url(../images/back.jpg) no-repeat;background-attachment:fixed;">
+<div class="adown-body">
+<div class="w">
+<div class="bgce">
+	<a rel="nofollow" href="http://app.guazistatic.com/c_guazi_2.3.0.0_web.apk"
+    class="icon-android" gjalog="100000000395000100000010">Android下载</a>
+    <a rel="nofollow" class="icon-ios" href="http://app.guazistatic.com/c_guazi_2.3.0.0_web.apk" gjalog="100000000396000100000010">IOS下载</a>
+	<div class="erweima"></div>
+</div>
+</div>
+</div>
+</body>
+</html>

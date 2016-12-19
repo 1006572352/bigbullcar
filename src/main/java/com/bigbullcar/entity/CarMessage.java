@@ -1,0 +1,135 @@
+package com.bigbullcar.entity;
+
+public class CarMessage {
+    private Integer carid;
+
+    private String username;
+
+    private String cartype;
+
+    private String carbrand;
+
+    private Double carprice;
+
+    private String carcolor;
+
+    private Integer carmileage;
+
+    private Integer carage;
+
+    public Double getMinprice() {
+		return minprice;
+	}
+
+	public void setMinprice(Double minprice) {
+		this.minprice = minprice;
+	}
+
+	public Double getMaxprice() {
+		return maxprice;
+	}
+
+	public void setMaxprice(Double maxprice) {
+		this.maxprice = maxprice;
+	}
+
+	private Integer carphoto;
+
+    private Integer carstate;
+    private Double minprice;
+    private Double maxprice;
+
+    public Integer getCarid() {
+        return carid;
+    }
+
+    public void setCarid(Integer carid) {
+        this.carid = carid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public String getCartype() {
+        return cartype;
+    }
+
+    public void setCartype(String cartype) {
+        this.cartype = cartype == null ? null : cartype.trim();
+    }
+
+    public String getCarbrand() {
+        return carbrand;
+    }
+
+    public void setCarbrand(String carbrand) {
+        this.carbrand = carbrand == null ? null : carbrand.trim();
+    }
+
+    public Double getCarprice() {
+        return carprice;
+    }
+
+    public void setCarprice(Double carprice) {
+        this.carprice = carprice;
+    }
+
+    public String getCarcolor() {
+        return carcolor;
+    }
+
+    public void setCarcolor(String carcolor) {
+        this.carcolor = carcolor == null ? null : carcolor.trim();
+    }
+
+
+
+    public Integer getCarmileage() {
+		return carmileage;
+	}
+
+	public void setCarmileage(Integer carmileage) {
+		this.carmileage = carmileage;
+	}
+
+	public Integer getCarage() {
+		return carage;
+	}
+
+	public void setCarage(Integer carage) {
+		this.carage = carage;
+	}
+
+	public Integer getCarphoto() {
+        return carphoto;
+    }
+
+    public void setCarphoto(Integer carphoto) {
+        this.carphoto = carphoto ;
+    }
+
+    public Integer getCarstate() {
+        return carstate;
+    }
+
+    public void setCarstate(Integer carstate) {
+        this.carstate = carstate;
+    }
+
+	@Override
+	public String toString() {
+		return "CarMessage [carid=" + carid + ", username=" + username
+				+ ", cartype=" + cartype + ", carbrand=" + carbrand
+				+ ", carprice=" + carprice + ", carcolor=" + carcolor
+				+ ", carmileage=" + carmileage + ", carage=" + carage
+				+ ", carphoto=" + carphoto + ", carstate=" + carstate
+				+ ", minprice=" + minprice + ", maxprice=" + maxprice + "]";
+	}
+    
+    
+}

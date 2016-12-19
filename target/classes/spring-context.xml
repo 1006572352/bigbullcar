@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+<!-- 扫描服务包名 2016-10-31 -->
+<context:component-scan base-package="com.bigbullcar.service"></context:component-scan>
+
+<!-- 配置jdbc属性文件 2016-10-31 -->
+<context:property-placeholder location="classpath:jdbc.properties"/>
+
+<!-- 配置数据源连接池 2016-10-31 -->
+<bean id="myDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+  <property name="url" value="${jdbc.url}"></property>
+  <property name="username" value="${jdbc.username}"></property>
+  <property name="password" value="${jdbc.password}"></property>
+  <property name="validationQuery" value="${validationQuery}"></property>
+</bean>
+
+<!-- 配置mybatis会话工厂 2016-10-31 -->
+<bean name="mySqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+  <property name="dataSource" ref="myDataSource"></property>
+  <!-- 加载原mybatis上下文 -->
+  <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+  <!-- 加载mapper映射文件 -->
+  <property name="mapperLocations" value="classpath:com/bigbullcar/dao/*.xml"></property>
+</bean>
+
+<!-- 配置事务管理器 2016-10-31 -->
+<bean id="myTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <property name="dataSource" ref="myDataSource"></property>
+</bean>
+
+<!-- 文件上传的配置 -->  
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">     
+       <!-- 指定所上传文件的总大小不能超过200KB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->     
+       <property name="maxUploadSize" value="20000000"/>     
+   </bean>     
+       
+   <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 -->     
+   <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">     
+       <property name="exceptionMappings">     
+           <props>     
+               <!-- 遇到MaxUploadSizeExceededException异常时，自动跳转到WebContent目录下的error.jsp页面 -->     
+               <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">index</prop>     
+           </props>     
+       </property>     
+   </bean>
+
+<!-- 开启事物扫描：当在服务实现类里面需要事务提交 at Transaction -->
+<tx:annotation-driven/>
+
+<!-- 配置sql会话模板 -->
+<bean id="mySqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+  <constructor-arg name="sqlSessionFactory" ref="mySqlSessionFactory"></constructor-arg>
+</bean>
+
+<!-- 配置独立的Mapper扫描器 -->
+<bean id="myMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+  <property name="basePackage" value="com.bigbullcar.dao"></property>
+  <property name="sqlSessionFactoryBeanName" value="mySqlSessionFactory"></property>
+</bean>
+
+
+</beans>

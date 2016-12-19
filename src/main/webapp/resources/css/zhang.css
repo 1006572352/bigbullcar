@@ -1,0 +1,122 @@
+@charset "utf-8";
+        .Car_box_zhang {
+            /* 显示车辆及信息的小盒子 */
+            display: block;
+            border: solid 2px #e6fee4;
+            float: left;
+            margin: 16px;
+            position: inherit;
+            width: 290px;
+        }
+
+        .Car_box_zhang:hover {
+            /*鼠标划过车辆显示淡蓝色边框*/
+            border: #5cd1c9 solid 2px;
+
+        }
+        .CarMessage_box_target_zhang:hover{
+            /* 小盒子里的汽车信息链接特效 */
+            color: #d9534f;
+            cursor: pointer;
+        }
+
+
+
+        #bigBox_zhang {
+            /* 大盒子样式 */
+        
+            width: 80%;
+            height: auto;
+            position: absolute;
+            left:14%;
+            top:118%; 
+             /*margin-top:-150px;
+              margin-left:-175px;*/
+
+        }
+
+        .ti-left {
+            /* tab 标签样式*/
+            display:block;
+            /*
+            list-style: none;
+            */
+            overflow: hidden;
+            
+            margin: 10px;
+            padding: 0;
+        }
+
+       ab{
+            /*tab 标签特效 */
+            float: left;
+            padding: 5px 28px;
+            cursor: pointer;
+            font-family: Microsoft YaHei;
+           /* color: #9198A3;  */
+
+       }
+        .tabDivClass{
+            /* 汽车小盒子字体 */
+            font-family: Microsoft YaHei;
+         }
+
+        .on{
+            /* tab 标签鼠标滑过样式 */
+            color:#FF6600;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #5cd1c9;
+        }
+        .fc-org{
+                /* 汽车售价 */
+                color: orange;
+                font-size: 28px;
+                font-family: Microsoft YaHei;
+        }
+        s{
+            /* 原价标签 */
+            color: black;
+            text-decoration: line-through;
+        }
+
+        .shuxian{
+            /* 那个小小的竖线 */
+            border-right:2px solid #9198A3;
+        }
+        .CarMessage_box_target_zhang{
+            /* 汽车标题信息字体 */
+            font-size: 18px;
+        }
+
+        .remen{
+            /* 标题热门好车四个大字 */
+            font-family: Microsoft YaHei;
+            color: black;
+            font-size: 22px;
+            float: left;
+            margin-right: 20px;
+        }
+        .fc-gray{
+            /* 备注说明样式 */
+            color: black;
+            font-size: 12px;
+            padding: 3px ;
+        }
+        .tag-red{
+            /* 急售特效 */
+            padding: 2px 10px;
+            font-style: normal;
+            font-size: 10px;
+            color:#e6fee4;
+            background: #ff5b35;
+            margin-left:90px;
+        }
+        .tag-green{
+            /* 新车标签样式 */
+            padding: 2px 10px;
+            font-style: normal;
+            font-size: 10px;
+            color:#e6fee4;
+            background: #5cd1c9;
+            margin-left:90px;
+        }

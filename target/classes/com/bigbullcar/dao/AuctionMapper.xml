@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigbullcar.dao.AuctionMapper">
+	<resultMap id="BaseResultMap" type="com.bigbullcar.entity.Auction">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="userName" property="userName" jdbcType="VARCHAR" />
+		<result column="buyPrice" property="buyPrice" jdbcType="VARCHAR" />
+		<result column="carId" property="carId" jdbcType="INTEGER" />
+		<result column="isMax" property="isMax" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		adminId, adminName, aPassword, aEmail
+	</sql>
+	<select id="select" resultMap="BaseResultMap" parameterType="com.bigbullcar.entity.Auction">
+		 select * from auction where 1=1
+   <if test="id!=null and id!=''"> and id=#{id}</if>
+ <if test="userName!=null and userName!=''"> and userName=#{userName}</if>
+ <if test="buyPrice!=null and buyPrice!=''"> and buyPrice=#{buyPrice}</if>
+ <if test="carId!=null and carId!=''"> and carId=#{carId}</if>
+ <if test="isMax!=null and isMax!=''"> and isMax=#{isMax}</if>
+	</select>
+	
+	 <select id="selectMax" resultType="com.bigbullcar.entity.Auction" parameterType="com.bigbullcar.entity.Auction">
+	     SELECT * FROM auction WHERE buyPrice=(SELECT MAX(buyPrice) FROM auction where carId=#{carId}) 
+	</select> 
+	
+	<delete id="delete" parameterType="com.bigbullcar.entity.Auction">
+		delete from auction where 1=1  
+		<if test="id!=null and id!=''"> and id=#{id}</if>
+ <if test="userName!=null and userName!=''"> and userName=#{userName}</if>
+ <if test="buyPrice!=null and buyPrice!=''"> and buyPrice=#{buyPrice}</if>
+ <if test="carId!=null and carId!=''"> and carId=#{carId}</if>
+ <if test="isMax!=null and isMax!=''"> and isMax=#{isMax}</if>
+	</delete>
+	
+	<insert id="add" parameterType="com.bigbullcar.entity.Auction">
+		insert into auction ( userName, buyPrice,
+		carId,isMax)
+		values ( #{userName,jdbcType=VARCHAR},
+		#{buyPrice,jdbcType=DOUBLE},
+		#{carId,jdbcType=INTEGER},#{isMax,jdbcType=INTEGER})
+	</insert>
+	
+	
+	<update id="update" parameterType="com.bigbullcar.entity.Auction">
+		update auction
+		<set>
+			<if test="buyPrice != null">
+				buyPrice = #{buyPrice,jdbcType=DOUBLE},
+			</if>
+			<if test="carId != null">
+				carId = #{carId,jdbcType=INTEGER},
+			</if>
+			<if test="isMax != null">
+				isMax = #{isMax,jdbcType=INTEGER},
+			</if>
+		</set>
+		where userName = #{userName,jdbcType=VARCHAR}
+	</update>
+	
+</mapper>

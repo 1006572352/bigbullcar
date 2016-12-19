@@ -1,0 +1,479 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<base href="<%=basePath%>">
+
+<title>大牛二手车市场</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+<link rel="stylesheet" type="text/css" href="resources/css/zhang.css">
+<script type="text/javascript" src="resources/js/zhang.js"></script>
+<style type="text/css">
+#Container {
+	width: 0 auto;
+	margin: 0 auto; /*设置整个容器在浏览器中水平居中*/
+	background: white;
+}
+
+#Header {
+	height: 150px;
+	background: #90C;
+}
+
+#logo {
+	padding-left: 50px;
+	padding-top: 20px;
+	padding-bottom: 50px;
+}
+
+#Content {
+	height: 440px;
+	background: #0FF;
+}
+
+#Content-Left {
+	height: 400px;
+	width: 300px;
+	margin: 20px; /*设置元素跟其他元素的距离为20像素*/
+	float: left; /*设置浮动，实现多列效果，div+Css布局中很重要的*/
+	background: #90C;
+}
+
+#Content-Main {
+	height: 400px;
+	width: 950px;
+	margin: 20px; /*设置元素跟其他元素的距离为20像素*/
+	float: left; /*设置浮动，实现多列效果，div+Css布局中很重要的*/
+	background: pink;
+}
+/*注：Content-Left和Content-Main元素是Content元素的子元素，两个元素使用了float:left;设置成两列，这个两个元素的宽度和这个两个元素设置的padding、margin的和一定不能大于父层Content元素的宽度，否则设置列将失败*/
+#Goods {
+	height: auto;
+	margin-left: 1.5%;
+}
+
+#Details {
+	height: 1300px;
+	width: 1280px;
+	margin: 20px; /*设置元素跟其他元素的距离为20像素*/
+	float: left; /*设置浮动，实现多列效果，div+Css布局中很重要的*/
+	background: #FBFBFF;
+}
+
+#Footer {
+	height: 300px;
+	background: pink;
+}
+
+#Footer-left {
+	height: 400px;
+	width: 300px;
+	margin: 20px; /*设置元素跟其他元素的距离为20像素*/
+	float: left; /*设置浮动，实现多列效果，div+Css布局中很重要的*/
+}
+
+#Footer-right {
+	height: 400px;
+	width: 950px;
+	margin: 20px; /*设置元素跟其他元素的距离为20像素*/
+	float: left; /*设置浮动，实现多列效果，div+Css布局中很重要的*/
+}
+</style>
+</head>
+
+<body>
+	<div id="Container">
+		<div id="Header">
+			<div id="logo">
+				赵宝珠+罗永杰
+				<table bgcolor="#33FFFF" width="100%">
+					<tr>
+						<td colspan="2">
+							<img src="../picture/top.PNG" />
+						</td>
+						<td>&nbsp;</td>
+						<td><a href="./index.jsp" target="new">首页</a></td>
+						<td><a href="bigbullcar/buycar" target="new">买车</a></td>
+						<td><a href="bigbullcar/salecar" target="new">卖车</a></td>
+						<td><a href="./resources/jsp/CustomerCarezbz.jsp" target="new">客服</a></td>
+						<td>
+							<a href="./resources/jsp/reg.jsp" target="new">注册</a>
+						</td>
+						<td>
+							<a href="./user/clear" target="new">登录</a>
+						</td>
+						<td>
+							<a href="./user/userview?userName=${userName }" target="new">${userNames }</a>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="Content">
+			<div id="Content-Left">黄川川</div>
+			<div id="Content-Main">
+				<img alt="大牛二手车" src="images/shl.jpg"
+					style="height: 357px; width: 641px; ">
+			</div>
+		</div>
+		<div id="Goods">
+			<div id="Details">
+  <div id="bigBox_zhang">
+
+
+    <!-- 无序-->
+
+    <span class="ti-left">
+        <span class="remen">热门好车</span>
+        <ab class="on" name="a100886">猜您喜欢</ab>
+        <ab  name="a100886">最新上架</ab>
+        <ab  name="a100886">降价急售</ab>
+        <ab  name="a100886">准新车</ab>
+        <ab  name="a100886">练手车</ab>
+        <ab  name="a100886">SUV</ab>
+    </span>
+
+    <div class="tabDivClass" id="tab-0">
+        <div class="Car_box_zhang">
+            <a href="#"><img src="./resources/images/bmw01.jpg" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="./resources/images/bmw02.jpg" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="./resources/images/bsj01.jpg" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+
+
+
+    </div>
+    <div class="tabDivClass" id="tab-1" style="display:none">
+        <div class="Car_box_zhang">
+            <a href="#"><img src="./resources/images/ford.jpg" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="./resources/images/AE86.jpg" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="./resources/images/huanguan.jpg" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+
+
+
+    </div>
+    <div class="tabDivClass" id="tab-2" style="display:none">
+        <div class="Car_box_zhang">
+            <a href="#"><img src="images/bmw (30).jpg" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+                <em class="tag-red">急售</em>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="images/bmw (31).jpg" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+                <em class="tag-red">急售</em>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="images/bmw (33).jpg" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+                <em class="tag-red">急售</em>
+            </p>
+        </div>
+
+    </div>
+    <div class="tabDivClass" id="tab-3" style="display:none">
+        <div class="Car_box_zhang">
+            <a href="#"><img src="" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+                <em class="tag-green">99新</em>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+                <em class="tag-green">99新</em>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+                <em class="tag-green">99新</em>
+            </p>
+        </div>
+
+    </div>
+    <div class="tabDivClass" id="tab-4" style="display:none">
+        <div class="Car_box_zhang">
+            <a href="#"><img src="" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+       </div>
+    <div class="tabDivClass" id="tab-5" style="display:none"> <div class="Car_box_zhang">
+        <a href="#"><img src="" width="290" height="190"/></a><br/>
+        <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+        <p class="fc-gray">
+            <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+        <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+            <s>11.80万</s>
+        </p>
+    </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+
+    </div>
+    <div class="tabDivClass" id="tab-6" style="display:none"> <div class="Car_box_zhang">
+        <a href="#"><img src="" width="290" height="190"/></a><br/>
+        <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+        <p class="fc-gray">
+            <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+        <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+            <s>11.80万</s>
+        </p>
+    </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+        </div>
+        <div class="Car_box_zhang">
+            <a href="#"><img src="" width="290" height="190"/></a><br/>
+            <a class="CarMessage_box_target_zhang">斯柯达晶锐 2011款 晶锐 1.6 自动...</a>
+            <p class="fc-gray">
+                <span class="">2010年8月上牌</span> <em class="shuxian"></em>&nbsp;行驶12.3万公里 </p>
+            <p class="priType-s">
+
+            <span>
+                <i class="fc-org">4.50万</i>
+            </span>
+                <s>11.80万</s>
+            </p>
+ </div>
+
+		
+		
+		
+			</div>	
+		</div>
+		<div id="Footer">
+			<!--加载footer 信息部分 -->
+			<div id="Footer-left">
+				咨询电话：400-029-6196
+				<br>
+				（周一至周日 8:00-21:00）
+				<br>
+				售后服务专线：400-733-1100
+			</div>
+			<div id="Footer-right">
+				<a rel="nofollow" href="/sh/aboutus/" target="_blank">关于大牛</a>
+				<a rel="nofollow" href="/sh/join/" target="_blank">加入我们</a>
+				<a rel="nofollow" href="/sh/contact" target="_blank">联系我们</a>
+				<a rel="nofollow" href="/sh/intro/" target="_blank">服务保障</a>
+			</div>
+			<div></div>
+
+		</div>
+</body>
+</html>

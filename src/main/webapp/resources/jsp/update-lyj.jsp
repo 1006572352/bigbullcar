@@ -1,0 +1,177 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>用户修改个人信息</title>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery-1.8.3.min.js"></script>
+<style type="text/css">
+span {
+	font-size: 12px;
+	color: #C00;
+	display: none;
+}
+
+div {
+	margin-left: 680px;
+}
+
+body {
+	background-image:
+		url("${pageContext.request.contextPath}/resources/images/1.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+}
+
+#table {
+	width: 450px;
+	height: 350px;
+	margin-left: 500px;
+	margin-top: 100px;
+}
+
+tr {
+	text-align: center;
+}
+</style>
+<script type="text/javascript">
+	var phone = /^(((13[0-9]{1})|(15[0-9]{1}))+\d{8})$/;
+	var email = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+	//验证手机号格式
+	function chkphone() {
+		if (!phone.test($("#telephone").val())) {
+			$("#telephonechk").css("display", "block");
+			$("#telephone").css("border-color", "red");
+		}
+		if (phone.test($("#telephone").val())) {
+			$("#telephonechk").css("display", "none");
+			$("#telephone").css("border-color", "green");
+		}
+	}
+	//验证邮箱格式    
+	function chkemail() {
+		if (!email.test($("#email").val())) {
+			$("#emailchk").css("display", "block");
+			$("#email").css("border-color", "red");
+		}
+		if (email.test($("#email").val())) {
+			$("#emailchk").css("display", "none");
+			$("#email").css("border-color", "green");
+		}
+	}
+	//验证是否输入密码
+	function chkpassword() {
+		if ($("#password").val() == "") {
+			$("#passwordchk").css("display", "block");
+			$("#password").css("border-color", "red");
+		}
+		if ($("#password").val() != "") {
+			$("#passwordchk").css("display", "none");
+			$("#password").css("border-color", "green");
+		}
+	}
+	//验证两次密码是否相同
+	function chkrepassword() {
+		if ($("#password").val() != $("#repassword").val()) {
+			$("#repasswordchk").css("display", "block");
+			$("#repassword").css("border-color", "red");
+		}
+		if ($("#password").val() == $("#repassword").val()) {
+			$("#repasswordchk").css("display", "none");
+			if ($("#repassword").val() == "") {
+				$("#repassword").css("border-color", "red");
+			} else
+				$("#repassword").css("border-color", "green");
+		}
+	}
+	//点击事件 提交
+	$(document).ready(function() {
+		$("#button").click(function() {
+			if ($("#telephone").val() == "") {
+				$("#telephonechk").css("display", "block");
+			} else if ($("#email").val() == "") {
+				$("#emailchk").css("display", "block");
+			} else if ($("#password").val() == "") {
+				$("#passwordchk").css("display", "block");
+			} else if ($("#repassword").val() == "") {
+				$("#repasswordchk").css("display", "block");
+			} else {
+				var a = confirm("是否修改");
+				if (a == true) {
+					$("#form").submit();
+				} else {
+					$("#telephone").val("");
+					$("#email").val("");
+					$("#password").val("");
+					$("#repassword").val("");
+					$("input").css("border-color", "white");
+				}
+
+			}
+		});
+	});
+</script>
+
+</head>
+<body>
+	<form action="../user/update" id="form" method="post" name="form">
+		<table border="1" id="table" class="table">
+			<tr>
+				<td colspan="2" align="center" style="color:#F30">用户修改个人信息</td>
+			</tr>
+			<tr>
+				<td>用户名：</td>
+				<td>${userName}</td>
+			</tr>
+			<tr>
+				<td>手机号:</td>
+				<td><input type="text" name="telephone" id="telephone"
+					class="phone_number" onblur="chkphone()" value="${user.telephone }"/><br>
+				<span id="telephonechk">请输入13,15开头的11位手机号</span></td>
+			</tr>
+			<tr>
+				<td>邮箱：</td>
+				<td><input type="text" name="email" id="email"
+					onblur="chkemail()" value="${user.email }"/><br>
+				<span id="emailchk">请输入正确的邮箱格式</span></td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td><input type="password" name="password" id="password"
+					onblur="chkpassword()" value="${user.password }" /><br>
+				<span id="passwordchk">请输入新密码</span></td>
+			</tr>
+			<tr>
+				<td>确认密码：</td>
+				<td><input type="password" name="repassword" id="repassword"
+					onblur="chkrepassword()" /><br>
+				<span id="repasswordchk">两次输入密码不相同</span></td>
+			</tr>
+			<tr>
+				<td rowspan="2" colspan="1" align="center"><a
+					href="javascript:history.go(-1)"> <input type="button"
+						value="返回上一页"
+						style="width: 150px;height:42px;background-color:#9C3" />
+				</a></td>
+				<td rowspan="2" colspan="1" align="center"><input id="button"
+					type="button" value="提交"
+					style="width: 150px;height:42px;background-color:#9C3" /></td>
+			</tr>
+		</table>
+		<p>
+		<div>
+			<a href="../index.jsp">返回主页</a>
+		</div>
+	</form>
+</body>
+</html>

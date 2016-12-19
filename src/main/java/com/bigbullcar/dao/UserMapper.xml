@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigbullcar.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.bigbullcar.entity.User" >
+    <id column="userName" property="userName" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+  </resultMap>  
+  <sql id="Base_Column_List" >
+    userName, userId, password, telephone, email
+  </sql> 
+  <!-- select 语句映射 id名对应dao接口的方法名， resultType对应方法的返回类型 -->
+	<select id="count" resultType="int">
+		select count(*) from user
+	</select>
+	
+	<select id="getUserByName" resultType="String">
+	SELECT userName FROM USER ORDER BY userName ASC
+	</select>
+
+	<!-- insert 语句映射 -->
+	<insert id="add" parameterType="User">
+		insert into
+		user(userName,password,telephone,email)values(#{userName},#{password},#{telephone},#{email})
+	</insert>
+
+	<!-- update 语句映射 : set 语句中等号左边的password是表字段名称 set 语句中等号右边的password是实体对象User中的成员变量名称 -->
+	<update id="updateUser" parameterType="User">
+		update user set password = #{password}, telephone=#{telephone}, email=#{email}
+		where 1=1
+		<if test="userName!=null">and userName=#{userName}</if>
+	</update>
+
+	<!-- delete 语句映射 -->
+	<delete id="delete" parameterType="User">
+		delete from user where 1=1
+		<if test="userid!=null">
+			and userId=#{userid}
+		</if>
+		<if test="userName!=null">
+			and userName=#{userName}
+		</if>
+	</delete>
+
+	<!-- select 用户列表 -->
+	<select id="getUserList" resultType="User">
+		select * from user
+	</select>
+	<!-- select 用户 -->
+	<select id="getUser" resultType="User">
+		select * from user
+		where 1=1 
+		<if test="userName!=null">and userName=#{userName}</if>
+	</select>
+	
+  <insert id="insertSelective" parameterType="com.bigbullcar.entity.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bigbullcar.entity.User" >
+    update user
+    <set >
+      <if test="userid != null" >
+        userId = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userName = #{userName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bigbullcar.entity.User" >
+    update user
+    set userId = #{userId,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR}
+    where userName = #{userName,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+ <!-- mybatis 上下文配置：根节点名称为configuration 2016-10-27 -->
+ <configuration>
+  <!-- 配置业务Mapper映射文件中实体对象的别名:包名org.mybatis.entity下的所有视图对象都可以使用别名 -->
+  <typeAliases>
+    <package name="com.bigbullcar.entity"/>
+  </typeAliases>
+  
+ </configuration>

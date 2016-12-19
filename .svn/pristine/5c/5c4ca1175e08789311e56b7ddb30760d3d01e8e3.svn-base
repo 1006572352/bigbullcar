@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigbullcar.dao.CarMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.bigbullcar.entity.CarMessage" >
+    <id column="carId" property="carid" jdbcType="INTEGER" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="carType" property="cartype" jdbcType="VARCHAR" />
+    <result column="carBrand" property="carbrand" jdbcType="VARCHAR" />
+    <result column="carPrice" property="carprice" jdbcType="DOUBLE" />
+    <result column="carColor" property="carcolor" jdbcType="VARCHAR" />
+    <result column="carMileage" property="carmileage" jdbcType="INTEGER" />
+    <result column="carAge" property="carage" jdbcType="INTEGER" />
+    <result column="carPhotoId" property="carphoto" jdbcType="INTEGER" />
+    <result column="carState" property="carstate" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    carId, userName, carType, carBrand, carPrice, carColor, carMileage, carAge, carPhotoId, 
+    carState
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from carmessage
+    where carId = #{carid,jdbcType=INTEGER}
+  </select>
+  
+<!-- 新增通过车辆品牌查询车辆信息 2016-11-3 -->
+  <select id="selectCarMessageByCarBrand" resultMap="BaseResultMap" parameterType="String">
+  select * from carmessage where carBrand like concat('%',#{carBrand},'%')
+  </select>
+  
+  <!-- 新增通过车辆价格查询车辆信息 2016-11-3 -->
+  <select id="selectCarMessageByCarPrice" resultMap="BaseResultMap" parameterType="CarMessage">
+   select * from carmessage where carPrice between #{minprice} and #{maxprice}
+  
+  </select>
+  
+  <!-- 新增通过车辆类型查询车辆信息 2016-11-3  -->
+  <select id="selectCarMessageByCarType" resultMap="BaseResultMap" parameterType="String">
+  select * from carmessage where carType = #{carType}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from carmessage
+    where carId = #{carid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bigbullcar.entity.CarMessage" >
+    insert into carmessage (userName, carType, 
+      carBrand, carPrice, carColor, 
+      carMileage, carAge, carPhotoId, 
+      carState)
+    values ( #{username,jdbcType=VARCHAR}, #{cartype,jdbcType=VARCHAR}, 
+      #{carbrand,jdbcType=VARCHAR}, #{carprice,jdbcType=DOUBLE}, #{carcolor,jdbcType=VARCHAR}, 
+      #{carmileage,jdbcType=INTEGER}, #{carage,jdbcType=INTEGER}, #{carphoto,jdbcType=INTEGER}, 
+      #{carstate,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bigbullcar.entity.CarMessage" >
+    insert into carmessage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="carid != null" >
+        carId,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="cartype != null" >
+        carType,
+      </if>
+      <if test="carbrand != null" >
+        carBrand,
+      </if>
+      <if test="carprice != null" >
+        carPrice,
+      </if>
+      <if test="carcolor != null" >
+        carColor,
+      </if>
+      <if test="carmileage != null" >
+        carMileage,
+      </if>
+      <if test="carage != null" >
+        carAge,
+      </if>
+      <if test="carphoto != null" >
+        carPhotoId,
+      </if>
+      <if test="carstate != null" >
+        carState,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="carid != null" >
+        #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="cartype != null" >
+        #{cartype,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null" >
+        #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="carprice != null" >
+        #{carprice,jdbcType=DOUBLE},
+      </if>
+      <if test="carcolor != null" >
+        #{carcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="carmileage != null" >
+        #{carmileage,jdbcType=INTEGER},
+      </if>
+      <if test="carage != null" >
+        #{carage,jdbcType=INTEGER},
+      </if>
+      <if test="carphoto != null" >
+        #{carphoto,jdbcType=INTEGER},
+      </if>
+      <if test="carstate != null" >
+        #{carstate,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bigbullcar.entity.CarMessage" >
+    update carmessage
+    <set >
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="cartype != null" >
+        carType = #{cartype,jdbcType=VARCHAR},
+      </if>
+      <if test="carbrand != null" >
+        carBrand = #{carbrand,jdbcType=VARCHAR},
+      </if>
+      <if test="carprice != null" >
+        carPrice = #{carprice,jdbcType=DOUBLE},
+      </if>
+      <if test="carcolor != null" >
+        carColor = #{carcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="carmileage != null" >
+        carMileage = #{carmileage,jdbcType=INTEGER},
+      </if>
+      <if test="carage != null" >
+        carAge = #{carage,jdbcType=INTEGER},
+      </if>
+      <if test="carphoto != null" >
+        carPhotoId = #{carphoto,jdbcType=INTEGER},
+      </if>
+      <if test="carstate != null" >
+        carState = #{carstate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where carId = #{carid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bigbullcar.entity.CarMessage" >
+    update carmessage
+    set userName = #{username,jdbcType=VARCHAR},
+      carType = #{cartype,jdbcType=VARCHAR},
+      carBrand = #{carbrand,jdbcType=VARCHAR},
+      carPrice = #{carprice,jdbcType=DOUBLE},
+      carColor = #{carcolor,jdbcType=VARCHAR},
+      carMileage = #{carmileage,jdbcType=INTEGER},
+      carAge = #{carage,jdbcType=INTEGER},
+      carPhotoId = #{carphoto,jdbcType=INTEGER},
+      carState = #{carstate,jdbcType=INTEGER}
+    where carId = #{carid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 实现车辆信息查询  2016-11-07 zbz -->
+   <select id="selectCarMessages" resultMap="BaseResultMap" parameterType="com.bigbullcar.entity.CarMessage">
+  select * from carmessage where 1=1
+   <if test="cartype!=null and cartype!=''"> and carType=#{cartype}</if>
+ <if test="carbrand!=null and carbrand!=''"> and carBrand=#{carbrand}</if>
+ <if test="carcolor!=null and carcolor!=''"> and carColor=#{carcolor}</if>
+ <if test="carage!=null and carage!=''"> and carAge&lt;=#{carage}</if>
+ <if test="carmileage!=null and carmileage!=''"> and carMileage&lt;=#{carmileage}</if>
+ <if test="carprice!=null and carprice!=''"> and carPrice&lt;=#{carprice}</if>
+ <if test="carid!=null and carid!=''"> and carId=#{carid}</if>
+  </select>
+</mapper>

@@ -1,0 +1,69 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>用户个人信息</title>
+    <style type="text/css">
+ body {
+ background-image:url("${pageContext.request.contextPath}/resources/images/1.jpg") ;
+ background-attachment:fixed;
+ background-repeat:no-repeat;
+ background-size:cover;
+ -moz-background-size:cover;
+ -webkit-background-size:cover;
+} 
+#table{
+     
+    width: 350px;
+	height: 250px;
+	margin-left: 500px;
+	margin-top: 100px;
+}
+tr{
+   text-align: center;
+}
+div{
+text-align: center;
+}
+</style>
+  </head>
+ <body>
+  <table border="1" id="table" class="table">
+     <tr>
+       <td colspan="2" align="center" style="color:#F30"> 用户信息</td>   
+     </tr>
+     <tr>
+       <td> 用户名：</td>
+       <td>${user.userName}</td>
+     </tr>
+     <tr>
+       <td> 手机号:</td>
+       <td>${user.telephone}</td>
+     </tr> 
+      <tr>
+       <td>邮箱：</td>
+       <td>${user.email }</td>
+     </tr>     
+      <tr>
+       <td rowspan="2" colspan="1" align="center"> <a href="javascript:history.go(-1)"> 
+		<input type="button" value="返回上一页" style="width: 150px;height:42px;background-color:#9C3" />
+	  </a></td>
+	  <td rowspan="2" colspan="1" align="center" >
+	    <a href="../user/getInfo"> 
+		<input type="button" value="修改" style="width: 150px;height:42px;background-color:#9C3" />
+	  </a>
+	  </td>
+     </tr>
+  </table>
+  <p>
+  <div><a href="../index.jsp">返回主页</a></div>
+     
+      
+  </body>
+</html>

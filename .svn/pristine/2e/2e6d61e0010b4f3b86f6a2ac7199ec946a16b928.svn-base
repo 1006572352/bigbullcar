@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigbullcar.dao.MessageMapper" >
+  <resultMap id="BaseResultMap" type="com.bigbullcar.entity.Message" >
+    <id column="mesId" property="mesid" jdbcType="INTEGER" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="mesContent" property="mescontent" jdbcType="VARCHAR" />
+    <result column="reContent" property="recontent" jdbcType="VARCHAR" />
+    <result column="carId" property="carid" jdbcType="INTEGER" />
+    <result column="mesTime" property="mestime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mesId, userName, mesContent, reContent, carId, mesTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from message
+    where mesId = #{mesid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from message
+    where mesId = #{mesid,jdbcType=INTEGER}
+  </delete>
+  <!-- select 信息列表 -->
+	<select id="getMessageList" resultType="Message">
+		select * from message
+	</select>	
+  <insert id="insert" parameterType="Message" >
+    insert into message (userName, mesContent,reContent,mesTime) 
+    values (#{username}, #{mescontent},#{recontent},#{mestime}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bigbullcar.entity.Message" >
+    insert into message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mesid != null" >
+        mesId,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="mescontent != null" >
+        mesContent,
+      </if>
+      <if test="recontent != null" >
+        reContent,
+      </if>
+      <if test="carid != null" >
+        carId,
+      </if>
+      <if test="mestime != null" >
+        mesTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mesid != null" >
+        #{mesid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mescontent != null" >
+        #{mescontent,jdbcType=VARCHAR},
+      </if>
+      <if test="recontent != null" >
+        #{recontent,jdbcType=VARCHAR},
+      </if>
+      <if test="carid != null" >
+        #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="mestime != null" >
+        #{mestime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bigbullcar.entity.Message" >
+    update message
+    <set >
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="mescontent != null" >
+        mesContent = #{mescontent,jdbcType=VARCHAR},
+      </if>
+      <if test="recontent != null" >
+        reContent = #{recontent,jdbcType=VARCHAR},
+      </if>
+      <if test="carid != null" >
+        carId = #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="mestime != null" >
+        mesTime = #{mestime,jdbcType=DATE},
+      </if>
+    </set>
+    where mesId = #{mesid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bigbullcar.entity.Message" >
+    update message
+    set userName = #{username,jdbcType=VARCHAR},
+      mesContent = #{mescontent,jdbcType=VARCHAR},
+      reContent = #{recontent,jdbcType=VARCHAR},
+      carId = #{carid,jdbcType=INTEGER},
+      mesTime = #{mestime,jdbcType=DATE}
+    where mesId = #{mesid,jdbcType=INTEGER}
+  </update>
+</mapper>

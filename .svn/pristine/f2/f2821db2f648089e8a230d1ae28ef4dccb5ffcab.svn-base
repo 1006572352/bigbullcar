@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>评估师团队</title>
+	<link rel="stylesheet" href="../../resources/css/stylehrefdgl.css" type="text/css">
+</head>
+<body>
+	<div id="contents">
+		<div class="clearfix">
+			<div class="sidebar">
+				<div>
+					<h2>我们的评估师</h2>
+					<p>
+					我们的评估师队伍能够运用目测、路试及借助相关仪器设备对二手车的技术状况进行综合检验和检测，结合车辆相关文件资料对二手车的技术状况进行鉴定，并根据评估的特定目的，选择适用的评估标准和方法进行二手车价格评估工作
+					</p>
+					<p>
+					我们的评估师队伍掌握汽车新技术，能操作、调用MITCHELL软件（一）；能洽谈业务，做好前期准备和现场手续检查；能直观和仪器检测各类汽车技术状况；掌握汽车主要部件和整车技术状况；最后估算价格。此外还掌握相关专业英语。
+					</p>
+				</div>
+				<div>
+					<h2>我们的评估标准</h2>
+					<p>
+					第一类：基本信息指标，包括7个项目：车辆类型、规定使用年限、累计行驶里程、维护保养情况、制造质量、工作性 质、工作条件；
+					</p>
+					<P>
+					总体公式：车辆评估价值=该上牌年代该车型的市场均价×同型号下不同款新车价的比例系数×里程车况系数
+					</p>
+				</div>
+			</div>
+			<div class="main">
+				<h1>我们的评估师</h1>
+				<div class="section">
+					<h2>首席评估师</h2>
+					<ul>
+						<li>
+							<div class="frame4">
+								<div class="box">
+									<img src="../images/zhangxuntao.png" alt="Img" height="94" width="90">
+								</div>
+							</div>
+							<p>
+								<b>张迅涛</b>  从事汽车行业多年，是国内最早的一批评估师，在全行业备受好评
+							</p>
+						</li>
+						<li>
+							<div class="frame4">
+								<div class="box">
+									<img src="../images/zhangqian.png" alt="Img" height="94" width="90">
+								</div>
+							</div>
+							<p>
+								<b>张乾</b> 从事汽车行业多年，是国内最早的一批评估师，对汽车评估具有独到的见解
+							</p>
+						</li>
+					</ul>
+				</div>
+				<div class="section">
+					<h2>优秀评估师</h2>
+					<ul>
+						<li>
+							<div class="frame4">
+								<div class="box">
+									<img src="../images/huangchuanchuan.png" alt="Img" height="94" width="90">
+								</div>
+							</div>
+							<p>
+								<b>黄川川</b> 业界非常优秀的评估师，二等级的职业水平，从事汽车行业多年，对二手车的技术状况能够进行综合检验和检测，并划分二手车的等级
+							</p>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<div class="frame4">
+								<div class="box">
+									<img src="../images/luoyongjie.png" alt="Img" height="94" width="90">
+								</div>
+							</div>
+							<p>
+								<b>罗永杰</b> 业界非常优秀的评估师，二等级的职业水平，拥有名车、特殊车的评估技术，还拥有大批量汽车的快速评估能力
+							</p>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<div class="frame4">
+								<div class="box">
+									<img src="../images/dongguilin.png" alt="Img" height="94" width="90">
+								</div>
+							</div>
+							<p>
+								<b>董桂林</b> 业界非常优秀的评估师，二等级的职业水平，熟悉未来汽车技术发展、能操作、调用MITCHELL软件（二）；掌握汽车常见故障对技术状况的影响
+							</p>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

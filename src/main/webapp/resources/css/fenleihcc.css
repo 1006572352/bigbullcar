@@ -1,0 +1,65 @@
+/*<![CDATA[*/ /* shawl.qiu pure css popup menu demo */
+         
+     /* ------------------- start 针对 Opera, Firefox 的 CSS 弹出菜单 -------------------*/
+     .pmVerticalRightOut .level{   /* 定义一级类别属性 */
+         position:relative; /* 显示位置为相对位置 */
+         display:block; /* 以块模式显示 */
+         padding:0px 2px; /* 文字内补丁间隔 */
+         margin:0px 0px 1px 0px; /* 菜单外补丁间隔 */
+     }
+     .pmVerticalRightOut .level:hover { /* 当鼠标划过一级菜单时 */
+         background-color:#99CC99; /* 背景色 */
+         color:orange; /* 文字颜色 */
+     }
+     .pmVerticalRightOut .level_{display:none; /* 默认隐藏二级类别 */}
+     
+     .pmVerticalRightOut .level:hover .level_ { /* 鼠标划过时触发显示二级类别 */
+         display:block; /* 以块显示 */
+         left:300px; /* 相对于一级类别显示的位置 */
+         width:500px; /* 宽度 */
+         height:auto; /* 高度 */
+         top:-50px; /* 相对于一级类别所在位置的顶端 */
+         position:absolute; /* 位置为绝对位置 */
+         z-index:99999;
+     }
+     .pmVerticalRightOut .level:hover .level_ .level_title {
+         /* 定义二级类别标题样式 */
+         background-color:#A7ADFE; /* 背景色 */
+         color:white; /* 文字颜色 */
+         background-image: url("../images/fenlei.jpg");
+     }
+     .pmVerticalRightOut .level:hover .level_ a:hover {
+         /* 定义二级类别链接显示样式 */
+         background-color:orange; /* 背景色 */
+         color:white; /* 文字颜色 */
+     }
+     /* ------------------- end 针对 Opera, Firefox 的 CSS 弹出菜单 -------------------*/
+     
+     /* ------------------- start 针对 IE 的 CSS 弹出菜单 -------------------*/
+     .levelIe{   /* 定义一级类别属性 */
+         width:120px; /* 宽度 */
+         height:17; /* 高度 */
+         position:relative; /* 显示位置为相对位置 */
+         display:block; /* 以块模式显示 */
+         padding:0px 2px; /* 文字内补丁间隔 */
+         margin:0px 0px 1px 0px; /* 菜单外补丁间隔 */
+     }
+     .levelIe .level_ { /* 鼠标划过时触发显示二级类别 */
+         display:block; /* 以块显示 */
+         left:124px; /* 相对于一级类别显示的位置 */
+         width:120px; /* 宽度 */
+         height:auto; /* 高度 */
+         top:-50px; /* 相对于一级类别所在位置的顶端 */
+         background-color:#EFEFEF; /* 定义背景色 */
+         position:absolute; /* 位置为绝对位置 */
+     }
+       .level{
+     height:130px;
+     }
+     .sx-price{
+     height:130px;
+     }
+     
+     .sx-chexing{
+     height:130px;
+     }

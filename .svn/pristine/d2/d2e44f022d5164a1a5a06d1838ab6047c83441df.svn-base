@@ -1,0 +1,85 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>管理员管理</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+  <style type="text/css">
+  body{
+    background-image:
+		url("${pageContext.request.contextPath}/resources/images/1.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+  }
+  
+  #table {
+	width: 750px;
+	margin-left: 350px;
+	margin-top: 100px;
+	text-align:center;
+}
+  h1{
+  text-align:center;
+  }
+  
+  td{
+  height:50px;
+  width:100px;
+  }
+  
+  #guanli{
+    width: 80px;
+  }
+  </style>
+  </head>
+  
+  <body>
+   <h1>大牛二手车用户信息</h1>
+    <table border="1" id="table" class="table">
+         <tr>
+           <td>用户编号</td>
+           <td>帐号</td>
+           <td>密码</td>
+           <td>邮箱</td>
+           <td>电话</td>
+           <td id="guanli">管理</td>
+         </tr>
+      <c:forEach items="${userList }" var="user" begin="${start }" end="${end }">
+		 <tr>
+		<td>${user.userid }</td>
+		<td>${user.userName }</td>
+		<td>${user.password }</td>
+		<td>${user.telephone }</td>
+		<td>${user.email }</td>
+		<td><a href="admin/adminLook/${user.userName }">查看</a>
+		<a href="admin/deleteuser/${user.userName }">删除</a>
+		<a href="admin/adminUpdateUser/${user.userName }">修改</a>
+		</td>
+		 </tr>
+	   </c:forEach>
+	   <tr><td colspan="6"><a href="admin/adminLogin${curpage-1 }">上一页</a>
+	   <a href="admin/adminLogin${curpage }">${curpage } / ${pagenum }</a>
+	   <a href="admin/adminLogin${curpage+1 }">下一页</a></td></tr>
+    </table>
+  </body>
+</html>
